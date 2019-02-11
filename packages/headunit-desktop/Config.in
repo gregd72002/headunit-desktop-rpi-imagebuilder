@@ -1,0 +1,5 @@
+config BR2_PACKAGE_HEADUNIT_DESKTOP
+	bool "headunit-desktop"
+	help
+        Adds headunit-desktop package 
+        https://github.com/viktorgino/headunit-desktop

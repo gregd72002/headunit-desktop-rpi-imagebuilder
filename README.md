@@ -5,15 +5,20 @@ Project based on https://github.com/romainreignier/minimal_raspberrypi_buildroot
 Objectives:
 - build stable image ready to flash that supports all functionality needed by headunit-desktop
 - be fast to boot
-- with wifi and bluetooth support
 - automatically starts headunit-desktop
+
+Hardware:
+- RPi 3 (with BT and WIFI)
+- RPi 7" touchscreen
 
 Nice to have:
 - read-only partition to minimize issues with sudden power loss
 
 ### Instructions
 Download and extract buildroot. Call it buildroot
+
 Download this repo: 
+
     git clone https://github.com/gregd72002/headunit-desktop-rpi-imagebuilder
 
 Create build and download directories
