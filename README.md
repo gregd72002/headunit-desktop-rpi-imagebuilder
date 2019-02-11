@@ -17,22 +17,28 @@ Download this repo:
     git clone https://github.com/gregd72002/headunit-desktop-rpi-imagebuilder
 
 Create build and download directories
+
     mkdir build
     mkdir buildroot_dl
   
 Prep
+
     cd build
     make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot/ raspberrypi3_minimal_defconfig
 
 To change buildroot config
+
     make menuconfig
 
 To change linux kernel config
+
     make linux-menuconfig
 
 Build
+
     make
 
 
 Flash
+
     dd if=images/sdcard.img of=/dev/XXXX bs=4MB
