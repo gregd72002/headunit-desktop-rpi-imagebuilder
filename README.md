@@ -1,6 +1,6 @@
 # Minimal Raspberry Pi 3 Linux configuration and Buildroot image to support headunit-desktop
 
-Project based on https://raw.githubusercontent.com/romainreignier/minimal_raspberrypi_buildroot
+Project based on https://github.com/romainreignier/minimal_raspberrypi_buildroot
 
 Objectives:
 - be fast to boot
