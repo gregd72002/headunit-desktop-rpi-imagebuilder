@@ -3,8 +3,8 @@
 Project based on https://github.com/romainreignier/minimal_raspberrypi_buildroot
 
 Objectives:
-- be fast to boot
 - build stable image ready to flash that supports all functionality needed by headunit-desktop
+- be fast to boot
 - with wifi and bluetooth support
 - automatically starts headunit-desktop
 
