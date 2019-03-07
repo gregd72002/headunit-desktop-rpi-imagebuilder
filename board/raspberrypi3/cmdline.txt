@@ -1,0 +1,1 @@
+root=/dev/nfs rw nfsroot=192.168.1.205:/mnt/usb/share/p,vers=4,tcp nfsrootdebug ip=dhcp rootwait elevator=deadline console=serial0,115200
