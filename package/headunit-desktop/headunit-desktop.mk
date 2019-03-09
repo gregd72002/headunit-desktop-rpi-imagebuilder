@@ -3,8 +3,6 @@
 # headunit-desktop 
 #
 #############################################################
-fewf
-wefwf
 HEADUNIT_DESKTOP_VERSION = master
 HEADUNIT_DESKTOP_SITE_METHOD = git
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/viktorgino/headunit-desktop.git 
