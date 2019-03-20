@@ -1,0 +1,8 @@
+config BR2_PACKAGE_BLUEZ_QT
+	bool "bluez-qt"
+	depends on BR2_PACKAGE_EXTRA_CMAKE_MODULES
+	depends on BR2_PACKAGE_QT5BASE
+	help
+        Adds bluez-qt package 
+	https://github.com/KDE/bluez-qt
+

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_TELEPI
+	bool "telepi"
+	help
+	Remote streaming for your Raspberry Pi
+	https://github.com/DougGore/telepi

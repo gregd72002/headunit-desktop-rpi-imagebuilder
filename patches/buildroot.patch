@@ -1,0 +1,32 @@
+--- package/gstreamer1/gst1-plugins-good/gst1-plugins-good.mk.orig	2019-03-12 21:29:41.616508541 +0000
++++ package/gstreamer1/gst1-plugins-good/gst1-plugins-good.mk	2019-03-12 21:29:53.396863156 +0000
+@@ -21,7 +21,7 @@
+ 	--disable-aalib \
+ 	--disable-aalibtest \
+ 	--disable-libcaca \
+-	--disable-qt
++	--enable-qt
+ 
+ # Options which require currently unpackaged libraries
+ GST1_PLUGINS_GOOD_CONF_OPTS += \
+--- package/protobuf/Config.in.orig	2019-03-13 11:20:22.017079039 +0000
++++ package/protobuf/Config.in	2019-03-13 11:21:01.846210800 +0000
+@@ -22,7 +22,7 @@
+ 	default y if BR2_x86_64
+ 	default y if BR2_sparc64
+ 	default y if BR2_TOOLCHAIN_HAS_ATOMIC
+-	depends on BR2_HOSTARCH = "x86_64" || BR2_HOSTARCH = "x86"
++#	depends on BR2_HOSTARCH = "x86_64" || BR2_HOSTARCH = "x86"
+ 	depends on BR2_USE_MMU # fork()
+ 
+ config BR2_PACKAGE_PROTOBUF
+--- package/ncurses/ncurses.mk.orig	2019-03-18 17:12:35.199864245 +0000
++++ package/ncurses/ncurses.mk	2019-03-18 17:13:25.245271026 +0000
+@@ -25,6 +25,7 @@
+ 	--enable-const \
+ 	--enable-overwrite \
+ 	--enable-pc-files \
++	--with-termlib \
+ 	--disable-stripping \
+ 	--with-pkg-config-libdir="/usr/lib/pkgconfig" \
+ 	$(if $(BR2_PACKAGE_NCURSES_TARGET_PROGS),,--without-progs) \

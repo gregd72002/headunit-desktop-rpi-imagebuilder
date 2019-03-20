@@ -1,0 +1,10 @@
+--- a/modules/android-auto/headunit/hu/hu_uti.cpp.orig	2019-03-15 21:50:00.550072893 +0000
++++ b/modules/android-auto/headunit/hu/hu_uti.cpp	2019-03-15 21:51:01.591868999 +0000
+@@ -32,7 +32,6 @@
+ #include <dirent.h>                                                   // For opendir (), readdir (), closedir (), DIR, struct dirent.
+ #include <sys/utsname.h>
+ #include <libusb.h>
+-#include <execinfo.h>
+ #include <dlfcn.h>    // for dladdr
+ #include <cxxabi.h>   // for __cxa_demangle
+ #include <ucontext.h>

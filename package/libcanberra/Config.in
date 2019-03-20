@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBCANBERRA
+	bool "libcanberra"
+	help
+        Adds libcanberra package 
+	http://0pointer.de/lennart/projects/libcanberra/#overview

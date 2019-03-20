@@ -1,0 +1,7 @@
+config BR2_PACKAGE_RTL_SDR
+	bool "rtl-sdr"
+	depends on BR2_PACKAGE_LIBUSB
+	depends on BR2_PACKAGE_LIBUSB_COMPAT
+	help
+        Adds Software to turn the RTL2832U into a SDR receiver
+	https://osmocom.org/projects/rtl-sdr/wiki

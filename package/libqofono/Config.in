@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBQOFONO
+	bool "libqofono"
+	help
+        Adds libqofono package 
+	https://git.merproject.org/mer-core/libqofono

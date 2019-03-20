@@ -1,0 +1,38 @@
+diff -ru /dev/null b/BluezQt.pc.in
+--- /dev/null   2019-03-07 11:00:10.312000000 +0000
++++ b/BluezQt.pc.in       2019-03-13 12:52:32.884811193 +0000
+@@ -0,0 +1,12 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include/KF5/BluezQt
++
++Name: @CMAKE_PROJECT_NAME@
++Description: Qt wrapper for Bluez 5 DBus API
++Version: @X265_LATEST_TAG@
++Requires: Qt5Core
++Libs: -L${libdir} -LKF5BluezQt
++Libs.private: @PRIVATE_LIBS@
++Cflags: -I${includedir}
+
+diff -ru a/CMakeList.txt  b/CMakeLists.txt
+--- a/CMakeLists.txt      2019-03-02 13:23:43.000000000 +0000
++++ b/CMakeLists.txt      2019-03-13 12:51:24.490793165 +0000
+@@ -104,6 +104,19 @@
+     endif()
+ endif()
+ 
++include(FindPkgConfig)
++if(PKG_CONFIG_FOUND)
++       # convert lists of link libraries into -lstdc++ -lm etc..
++       foreach(LIB ${CMAKE_CXX_IMPLICIT_LINK_LIBRARIES} ${PLATFORM_LIBS})
++           set(PRIVATE_LIBS "${PRIVATE_LIBS} -l${LIB}")
++       endforeach()
++       # Produce a pkg-config file for linking against the shared lib
++       configure_file("BluezQt.pc.in" "BluezQt.pc" @ONLY)
++       install(FILES       "${CMAKE_CURRENT_BINARY_DIR}/BluezQt.pc"
++               DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig")
++endif()
++
++
+ install(FILES bluez.categories DESTINATION ${KDE_INSTALL_CONFDIR})

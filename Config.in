@@ -1,3 +1,13 @@
 menu "Custom packages"
  	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/headunit-desktop/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/libcanberra/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/libqofono/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/bluez-qt/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/extra-cmake-modules/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/gconf2/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/rtl-sdr/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/qt-gstreamer/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/telepi/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/libtermkey/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/termkeyboard/Config.in" 
 endmenu

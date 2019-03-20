@@ -1,5 +1,18 @@
 config BR2_PACKAGE_HEADUNIT_DESKTOP
 	bool "headunit-desktop"
+	depends on BR2_PACKAGE_BLUEZ_QT
+	depends on BR2_PACKAGE_LIBCANBERRA
+	depends on BR2_PACKAGE_LIBQOFONO
+	depends on BR2_PACKAGE_QT5BASE
+	depends on BR2_PACKAGE_QT5QUICKCONTROLS2
+	depends on BR2_PACKAGE_GCONF2
+	depends on BR2_PACKAGE_QT_GSTREAMER
+	depends on BR2_PACKAGE_PROTOBUF
+	depends on BR2_PACKAGE_FFTW
+	depends on BR2_PACKAGE_FFTW_USE_NEON
+	depends on BR2_PACKAGE_FFTW_PRECISION_SINGLE
+	depends on BR2_PACKAGE_RTL_SDR
+	depends on BR2_PACKAGE_FAAD2
 	help
         Adds headunit-desktop package 
         https://github.com/viktorgino/headunit-desktop

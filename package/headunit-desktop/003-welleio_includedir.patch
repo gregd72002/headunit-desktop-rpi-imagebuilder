@@ -1,0 +1,10 @@
+--- a/modules/welle-io/welle-io.pro.orig	2019-03-16 10:00:43.004166059 +0000
++++ b/modules/welle-io/welle-io.pro	2019-03-16 10:00:49.016360697 +0000
+@@ -148,7 +148,6 @@
+            $$PWD/welle.io/src/CChannels.cpp
+ 
+ unix:!macx:!android: {
+-    INCLUDEPATH	+= /usr/local/include
+     LIBS    += -lfftw3f
+     LIBS    += -lusb-1.0
+     LIBS    += -ldl

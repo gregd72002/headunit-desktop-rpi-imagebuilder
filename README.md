@@ -30,6 +30,7 @@ Prep
 
     cd build
     make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot/ raspberrypi3_minimal_defconfig
+    patch -d ../buildroot/ -p0 < ../headunit-desktop-rpi-imagebuilder/patches/000-gst1-qt.patch
 
 To change buildroot config
 

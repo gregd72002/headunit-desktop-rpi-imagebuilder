@@ -1,0 +1,50 @@
+diff -ru a/examples/appsink-src/CMakeLists.txt b/examples/appsink-src/CMakeLists.txt
+--- a/examples/appsink-src/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/examples/appsink-src/CMakeLists.txt	2014-10-21 08:55:56.993360084 +0000
+@@ -20,3 +20,6 @@
+ add_executable(appsink-src main.cpp)
+ target_link_libraries(appsink-src ${QTGSTREAMER_UTILS_LIBRARIES})
+ qt4or5_use_modules(appsink-src Core)
++install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/appsink-src
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt/examples/qt-gstreamer/appsink-src)
++
+diff -ru a/examples/player/CMakeLists.txt b/examples/player/CMakeLists.txt
+--- a/examples/player/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/examples/player/CMakeLists.txt	2014-10-21 08:56:14.602434867 +0000
+@@ -21,3 +21,6 @@
+ add_executable(player ${player_SOURCES})
+ target_link_libraries(player ${QTGSTREAMER_UI_LIBRARIES})
+ qt4or5_use_modules(player Core Gui Widgets)
++install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/player
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt/examples/qt-gstreamer/player)
++
+diff -ru a/examples/qmlplayer/CMakeLists.txt b/examples/qmlplayer/CMakeLists.txt
+--- a/examples/qmlplayer/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/examples/qmlplayer/CMakeLists.txt	2014-10-21 08:57:27.894908328 +0000
+@@ -48,3 +48,6 @@
+ if (Qt4or5_OpenGL_FOUND AND (OPENGL_FOUND OR OPENGLES2_FOUND))
+     qt4or5_use_modules(qmlplayer OpenGL)
+ endif()
++install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/qmlplayer
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt/examples/qt-gstreamer/qmlplayer)
++
+diff -ru a/examples/recorder/CMakeLists.txt b/examples/recorder/CMakeLists.txt
+--- a/examples/recorder/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/examples/recorder/CMakeLists.txt	2014-10-21 08:58:53.024104251 +0000
+@@ -20,3 +20,6 @@
+ add_executable(recorder main.cpp ${recorder_UI_SRCS})
+ target_link_libraries(recorder ${QTGSTREAMER_LIBRARIES})
+ qt4or5_use_modules(recorder Core Gui Widgets)
++install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/recorder
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt/examples/qt-gstreamer/recorder)
++
+diff -ru a/examples/voip/CMakeLists.txt b/examples/voip/CMakeLists.txt
+--- a/examples/voip/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/examples/voip/CMakeLists.txt	2014-10-21 08:59:22.321892464 +0000
+@@ -20,3 +20,6 @@
+ add_executable(voip main.cpp ${voip_UI_SRCS})
+ target_link_libraries(voip ${QTGSTREAMER_UI_LIBRARIES})
+ qt4or5_use_modules(voip Core Gui Widgets)
++install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/voip
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/qt/examples/qt-gstreamer/voip)
++

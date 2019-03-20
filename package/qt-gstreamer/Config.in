@@ -1,0 +1,24 @@
+comment "qt-gstreamer need Qt (4 or 5) and gstreamer (0.10 or 1.0)"
+	depends on !(BR2_PACKAGE_QT5 || BR2_PACKAGE_QT4)
+	depends on !(BR2_PACKAGE_GSTREAMER || BR2_PACKAGE_GSTREAMER1)
+
+config BR2_PACKAGE_QT_GSTREAMER
+	bool "qt-gstreamer"
+	select BR2_PACKAGE_BOOST
+	depends on BR2_PACKAGE_QT5 || BR2_PACKAGE_QT4
+	depends on BR2_PACKAGE_GSTREAMER || BR2_PACKAGE_GSTREAMER1
+	help
+	  QtGStreamer is a set of libraries providing C++ bindings for GStreamer
+	  with a Qt-style API, plus some helper classes and elements for
+	  integrating GStreamer better in Qt applications.
+
+	  http://gstreamer.freedesktop.org/modules/qt-gstreamer.html
+
+if BR2_PACKAGE_QT_GSTREAMER
+
+config BR2_PACKAGE_QT_GSTREAMER_EXAMPLES
+	bool "Install exemples"
+	help
+	  Compile and install exemples on target
+
+endif

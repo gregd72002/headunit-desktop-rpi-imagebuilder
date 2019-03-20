@@ -1,0 +1,12 @@
+diff -ru a/qt-gstreamer-0.10.3/CMakeLists.txt b/qt-gstreamer-0.10.3/CMakeLists.txt
+--- a/CMakeLists.txt	2013-10-14 08:44:40.000000000 +0000
++++ b/CMakeLists.txt	2014-10-21 12:19:49.475542801 +0000
+@@ -161,6 +161,8 @@
+         set(QTGSTREAMER_QTQUICK1_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/qt4/imports)
+     endif()
+ endif()
++set(QTGSTREAMER_QTQUICK1_INSTALL_DIR ${QTGSTREAMER_QTQUICK1_INSTALL_DIR} CACHE PATH "Installation path QtQuick1 modules")
++set(QTGSTREAMER_QTQUICK2_INSTALL_DIR ${QTGSTREAMER_QTQUICK2_INSTALL_DIR} CACHE PATH "Installation path QtQuick2 modules")
+ 
+ 
+ if (QTGSTREAMER_CODEGEN AND FLEX_FOUND AND BISON_FOUND)
