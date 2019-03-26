@@ -1,0 +1,5 @@
+config BR2_PACKAGE_DISPMANX_VNC
+	bool "dispmanx-vnc"
+	help
+	VNC Server for Raspberry PI using dispmanx
+	https://github.com/hanzelpeter/dispmanx_vnc

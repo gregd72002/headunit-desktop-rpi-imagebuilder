@@ -1,0 +1,18 @@
+--- a/Makefile.orig	2019-03-21 11:26:03.673905638 +0000
++++ b/Makefile	2019-03-21 10:53:54.289894997 +0000
+@@ -4,9 +4,14 @@
+ #  Build dependencies: libvncserver-dev and libraspberrypi-dev
+ #
+ 
++CC ?= gcc
++PREFIX ?= /
+ APP:=dispmanx_vncserver
+ 
+ all: $(APP)
+ 
+ $(APP): main.c
+-	gcc -O3 main.c -o $(APP) -DHAVE_LIBBCM_HOST -DUSE_EXTERNAL_LIBBCM_HOST -DUSE_VCHIQ_ARM -Wno-psabi -I/opt/vc/include/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -L/opt/vc/lib/ -lbrcmGLESv2 -lbrcmEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread -lrt -lvncserver
++	$(CC) -O3 main.c -o $(APP) -DHAVE_LIBBCM_HOST -DUSE_EXTERNAL_LIBBCM_HOST -DUSE_VCHIQ_ARM -Wno-psabi -I$(PREFIX)/usr/include/ -L$(PREFIX)/usr/lib/ -lbrcmGLESv2 -lbrcmEGL -lopenmaxil -lbcm_host -lvcos -lvchiq_arm -lpthread -lrt -lvncserver -lvchostif -lvcilcs
++
++install: 
++	cp dispmanx_vncserver $(PREFIX)/usr/bin/

@@ -23,6 +23,9 @@ endef
 
 define HEADUNIT_DESKTOP_INSTALL_TARGET_CMDS
 	INSTALL_ROOT=$(TARGET_DIR) DESTDIR=$(TARGET_DIR) $(MAKE) -C $(@D) install 
+
+
+	find $(TARGET_DIR)/opt/*-plugin -mindepth 2 -type f -print -exec cp {} $(TARGET_DIR)/opt/ \;
 endef
 
 $(eval $(generic-package))

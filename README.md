@@ -1,4 +1,4 @@
-# Minimal Raspberry Pi 3 Linux configuration and Buildroot image to support headunit-desktop
+# Minimal Raspberry Pi Linux configuration and Buildroot image to support headunit-desktop
 
 Project based on https://github.com/romainreignier/minimal_raspberrypi_buildroot
 
@@ -8,7 +8,7 @@ Objectives:
 - automatically starts headunit-desktop
 
 Hardware:
-- RPi 3 (with BT and WIFI)
+- RPi 1,2 & 3 (with BT and WIFI)
 - RPi 7" touchscreen
 
 Nice to have:
@@ -29,8 +29,8 @@ Create build and download directories
 Prep
 
     cd build
-    make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot/ raspberrypi3_minimal_defconfig
-    patch -d ../buildroot/ -p0 < ../headunit-desktop-rpi-imagebuilder/patches/000-gst1-qt.patch
+    patch -d ../buildroot/ -p0 < ../headunit-desktop-rpi-imagebuilder/patches/buildroot.patch
+    make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot/ raspberrypi_defconfig
 
 To change buildroot config
 
@@ -48,3 +48,13 @@ Build
 Flash
 
     dd if=images/sdcard.img of=/dev/XXXX bs=4MB
+
+
+Running
+
+    /opt/headunit-app
+
+VNC (remote access)
+
+    dispmanx_vncserver -r
+

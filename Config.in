@@ -10,4 +10,5 @@ menu "Custom packages"
  	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/telepi/Config.in" 
  	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/libtermkey/Config.in" 
  	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/termkeyboard/Config.in" 
+ 	source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/dispmanx-vnc/Config.in" 
 endmenu
