@@ -49,6 +49,15 @@ __EOF__
 
 done
 
+if ! grep -qE '^dtparam=audio=on' "${BINARIES_DIR}/rpi-firmware/config.txt"; then
+	echo "Adding 'dtparam=audio=on' to config.txt (enables audio)."
+	cat << __EOF__ >> "${BINARIES_DIR}/rpi-firmware/config.txt"
+# enable audio 
+dtparam=audio=on
+__EOF__
+fi
+
+
 rm -rf "${GENIMAGE_TMP}"
 
 genimage                           \

@@ -1,5 +1,0 @@
-config BR2_PACKAGE_TERMKEYBOARD
-	bool "termkeyboard"
-	help
-        Adds termkeyboard package 
-	https://github.com/chaitu236/TermKeyboard

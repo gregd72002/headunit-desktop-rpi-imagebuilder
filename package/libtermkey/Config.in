@@ -1,5 +1,0 @@
-config BR2_PACKAGE_LIBTERMKEY
-	bool "libtermkey"
-	help
-        Adds libtermkey package 
-	https://github.com/neovim/libtermkey

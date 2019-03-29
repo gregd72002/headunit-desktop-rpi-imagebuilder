@@ -26,6 +26,9 @@ define LIBQOFONO_INSTALL_STAGING_CMDS
 	mv $(STAGING_DIR)$(STAGING_DIR)/usr/lib/pkgconfig/qofono* $(STAGING_DIR)/usr/lib/pkgconfig/
 	mv $(STAGING_DIR)$(STAGING_DIR)/usr/lib/libqofono-qt5.* $(STAGING_DIR)/usr/lib/
 
+	mkdir --parent $(STAGING_DIR)/usr/qml/MeeGo/
+	rsync -a $(STAGING_DIR)$(STAGING_DIR)/usr/qml/MeeGo/QOfono $(STAGING_DIR)/usr/qml/MeeGo/
+
 	$(QT5_LA_PRL_FILES_FIXUP)
 
 	rm -rdf $(STAGING_DIR)$(BASE_DIR)/host/share/qt5/mkspecs/features/qofono-qt5.prf 
@@ -35,7 +38,7 @@ endef
 define LIBQOFONO_INSTALL_TARGET_CMDS
 	cp -dpfr $(STAGING_DIR)/usr/include/qofono-qt5 $(TARGET_DIR)/usr/
 	cp -dpf $(STAGING_DIR)/usr/lib/libqofono-qt5.* $(TARGET_DIR)/usr/lib
-#	cp -dpfr $(STAGING_DIR)/usr/lib/libqofono-qt5 $(TARGET_DIR)/usr/lib/libqofono-qt5
+	rsync -a $(STAGING_DIR)/usr/qml/MeeGo/QOfono $(TARGET_DIR)/usr/qml/MeeGo/
 endef
 
 $(eval $(generic-package))

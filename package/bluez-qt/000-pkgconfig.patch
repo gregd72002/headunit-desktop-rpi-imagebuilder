@@ -11,7 +11,7 @@ diff -ru /dev/null b/BluezQt.pc.in
 +Description: Qt wrapper for Bluez 5 DBus API
 +Version: @X265_LATEST_TAG@
 +Requires: Qt5Core
-+Libs: -L${libdir} -LKF5BluezQt
++Libs: -L${libdir} -lKF5BluezQt
 +Libs.private: @PRIVATE_LIBS@
 +Cflags: -I${includedir}
 

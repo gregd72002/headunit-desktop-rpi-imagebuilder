@@ -20,13 +20,3 @@
  	depends on BR2_USE_MMU # fork()
  
  config BR2_PACKAGE_PROTOBUF
---- package/ncurses/ncurses.mk.orig	2019-03-18 17:12:35.199864245 +0000
-+++ package/ncurses/ncurses.mk	2019-03-18 17:13:25.245271026 +0000
-@@ -25,6 +25,7 @@
- 	--enable-const \
- 	--enable-overwrite \
- 	--enable-pc-files \
-+	--with-termlib \
- 	--disable-stripping \
- 	--with-pkg-config-libdir="/usr/lib/pkgconfig" \
- 	$(if $(BR2_PACKAGE_NCURSES_TARGET_PROGS),,--without-progs) \

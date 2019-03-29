@@ -10,22 +10,33 @@ if [ -e ${TARGET_DIR}/etc/inittab ]; then
 tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' ${TARGET_DIR}/etc/inittab
 fi
 
+# Add root to pulse-access
+if [ -e ${TARGET_DIR}/etc/group ]; then
+#add pulse-access group if not exist
+    grep -qE 'pulse-access:x:1004:pulse' ${TARGET_DIR}/etc/group || \
+	    sed -i "\$apulse-access:x:1004:pulse" ${TARGET_DIR}/etc/group
+#add root to pulse-access
+    grep -qE '1004:pulse,root' ${TARGET_DIR}/etc/group || \
+	    sed -i 's/\<1004:pulse\>/&,root/' ${TARGET_DIR}/etc/group
+fi
+
 # Remove unused firmware files
-UNNEEDED_FILES="brcmfmac43143.bin \
-    brcmfmac43143-sdio.bin \
-    brcmfmac43236b.bin \
-    brcmfmac43241b0-sdio.bin \
-    brcmfmac43241b4-sdio.bin \
-    brcmfmac43241b5-sdio.bin \
-    brcmfmac43242a.bin \
-    brcmfmac43340-sdio.bin \
-    brcmfmac43362-sdio.bin \
-    brcmfmac43430a0-sdio.bin \
-    brcmfmac43455-sdio.bin \
-    brcmfmac43569.bin \
-    brcmfmac43570-pcie.bin \
-    brcmfmac43602-pcie.ap.bin \
-    brcmfmac43602-pcie.bin"
+UNNEEDED_FILES=
+#UNNEEDED_FILES="brcmfmac43143.bin \
+#    brcmfmac43143-sdio.bin \
+#    brcmfmac43236b.bin \
+#    brcmfmac43241b0-sdio.bin \
+#    brcmfmac43241b4-sdio.bin \
+#    brcmfmac43241b5-sdio.bin \
+#    brcmfmac43242a.bin \
+#    brcmfmac43340-sdio.bin \
+#    brcmfmac43362-sdio.bin \
+#    brcmfmac43430a0-sdio.bin \
+#    brcmfmac43455-sdio.bin \
+#    brcmfmac43569.bin \
+#    brcmfmac43570-pcie.bin \
+#    brcmfmac43602-pcie.ap.bin \
+#    brcmfmac43602-pcie.bin"
 
 if [ -d ${TARGET_DIR}/lib/firmware/brcm ]; then
     cd ${TARGET_DIR}/lib/firmware/brcm/
