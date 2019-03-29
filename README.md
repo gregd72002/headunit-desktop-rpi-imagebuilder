@@ -58,3 +58,7 @@ VNC (remote access)
 
     dispmanx_vncserver -r
 
+Wifi
+    Edit /etc/netowrk/interfaces and uncomment all the lines
+    Edit /etc/wpa_supplicant and replace NETWORK and PASSWORD with your WiFi network details
+    Reboot 
