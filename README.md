@@ -1,10 +1,12 @@
 # Minimal Raspberry Pi Linux configuration and Buildroot image to support headunit-desktop
 
+For pre-built images see ./images/ folder
+
 Project based on https://github.com/romainreignier/minimal_raspberrypi_buildroot
 
 Objectives:
 - build stable image ready to flash that supports all functionality needed by headunit-desktop
-- be fast to boot
+- be fast to boot(^)
 - automatically starts headunit-desktop
 
 Hardware:
@@ -59,6 +61,5 @@ VNC (remote access)
     dispmanx_vncserver -r
 
 Wifi
-    Edit /etc/netowrk/interfaces and uncomment all the lines
-    Edit /etc/wpa_supplicant and replace NETWORK and PASSWORD with your WiFi network details
+    Edit /boot/headunit.cfg and enter wifi_ssid and wifi_pass
     Reboot 

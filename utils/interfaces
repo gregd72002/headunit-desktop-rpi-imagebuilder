@@ -12,5 +12,5 @@ allow-hotplug eth0
 #  udhcpc_opts -t 10
 #  wireless_mode managed
 #  wireless_essid any
-#  pre-up wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+#  pre-up wpa_supplicant -B -D wext -i wlan0 -c /tmp/wpa_supplicant.conf
 #  post-down killall -q wpa_supplicant

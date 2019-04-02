@@ -1,0 +1,37 @@
+#!/bin/sh
+
+case "$1" in
+	start)
+		printf "Autostart..."
+		AUTOSTART=`sed -n -e 's/headunit_autostart=//p' /boot/headunit.cfg`
+		PLUGINS=`sed -n -e "s/plugins=//p" /boot/headunit.cfg`
+		if [ "$AUTOSTART" -eq "1" ] 
+		then
+			echo "Starting headunit... ${PLUGINS}"
+			/usr/bin/headunit.sh -p "${PLUGINS}" &
+		fi
+
+		AUTOSTART=`sed -n -e 's/vncserver_autostart=//p' /boot/headunit.cfg`
+		if [ "$AUTOSTART" -eq "1" ] 
+		then
+			echo "Starting vncserver... "
+			/usr/bin/dispmanx_vncserver -r > /dev/null 2>&1 &
+		fi
+
+		;;
+	stop)
+		printf "Autostart - closing apps"
+		killall dispmanx_vncserver
+		killall headunit.sh
+		killall headunit
+		echo "done."
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+	*)
+		echo "usage: $0 {start|stop|restart}"
+		;;
+esac

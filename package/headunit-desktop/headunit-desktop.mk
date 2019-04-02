@@ -5,8 +5,9 @@
 #############################################################
 
 HEADUNIT_DESKTOP_VERSION = 18e430f
-HEADUNIT_DESKTOP_SITE_METHOD = git
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/viktorgino/headunit-desktop.git
+
+HEADUNIT_DESKTOP_SITE_METHOD = git
 HEADUNIT_DESKTOP_GIT_SUBMODULES = y
 HEADUNIT_DESKTOP_SITE = $(call qstrip,$(HEADUNIT_DESKTOP_REPO_URL))
 
@@ -24,8 +25,8 @@ endef
 define HEADUNIT_DESKTOP_INSTALL_TARGET_CMDS
 	INSTALL_ROOT=$(TARGET_DIR) DESTDIR=$(TARGET_DIR) $(MAKE) -C $(@D) install 
 
-
-	find $(TARGET_DIR)/opt/*-plugin -mindepth 2 -type f -print -exec cp {} $(TARGET_DIR)/opt/ \;
+	mkdir --parent $(TARGET_DIR)/opt/plugins
+	find $(TARGET_DIR)/opt/*-plugin -mindepth 2 -type f -print -exec cp {} $(TARGET_DIR)/opt/plugins/ \;
 endef
 
 $(eval $(generic-package))

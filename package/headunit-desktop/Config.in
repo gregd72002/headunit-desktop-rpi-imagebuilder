@@ -11,7 +11,6 @@ config BR2_PACKAGE_HEADUNIT_DESKTOP
 	depends on BR2_PACKAGE_FFTW_SINGLE
 	depends on BR2_PACKAGE_RTL_SDR
 	depends on BR2_PACKAGE_FAAD2
-	depends on BR2_PACKAGE_QT_MOBILITY
 	help
         Adds headunit-desktop package 
         https://github.com/viktorgino/headunit-desktop

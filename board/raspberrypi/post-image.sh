@@ -7,6 +7,9 @@ BOARD_NAME="$(basename ${BOARD_DIR})"
 GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
+
+cp ${BOARD_DIR}/headunit.cfg ${BINARIES_DIR}/
+
 for arg in "$@"
 do
 	case "${arg}" in
@@ -17,6 +20,17 @@ do
 
 # fixes rpi3 ttyAMA0 serial console
 dtoverlay=pi3-miniuart-bt
+core_freq=250
+__EOF__
+		fi
+		;;
+		--audio)
+		if ! grep -qE '^dtparam=audio=on' "${BINARIES_DIR}/rpi-firmware/config.txt"; then
+			echo "Adding 'dtparam=audio=on' to config.txt (enables audio)."
+			cat << __EOF__ >> "${BINARIES_DIR}/rpi-firmware/config.txt"
+
+# enable audio
+dtparam=audio=on
 __EOF__
 		fi
 		;;
@@ -48,15 +62,6 @@ __EOF__
 	esac
 
 done
-
-if ! grep -qE '^dtparam=audio=on' "${BINARIES_DIR}/rpi-firmware/config.txt"; then
-	echo "Adding 'dtparam=audio=on' to config.txt (enables audio)."
-	cat << __EOF__ >> "${BINARIES_DIR}/rpi-firmware/config.txt"
-# enable audio 
-dtparam=audio=on
-__EOF__
-fi
-
 
 rm -rf "${GENIMAGE_TMP}"
 

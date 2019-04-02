@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case "$1" in
+	start)
+		printf "Configuring."
+		WIFI_SSID=`sed -n -e 's/wifi_ssid=//p' /boot/headunit.cfg`
+		WIFI_PASS=`sed -n -e 's/wifi_pass=//p' /boot/headunit.cfg`
+		cp /etc/wpa_supplicant.conf /tmp/
+		sed -i "s/SSID_NAME/${WIFI_SSID}/" /tmp/wpa_supplicant.conf
+		sed -i "s/WIFI_PASS/${WIFI_PASS}/" /tmp/wpa_supplicant.conf
+
+
+
+		echo "done."
+		;;
+	stop)
+		printf "Configuring."
+		echo "done."
+		;;
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+	*)
+		echo "usage: $0 {start|stop|restart}"
+		;;
+esac
