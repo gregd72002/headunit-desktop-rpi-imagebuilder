@@ -23,7 +23,7 @@ case "$1" in
 		printf "Autostart - closing apps"
 		killall dispmanx_vncserver
 		killall headunit.sh
-		killall headunit
+		killall headunit-app
 		echo "done."
 		;;
 	restart)
