@@ -17,7 +17,7 @@ Nice to have:
 - read-only partition to minimize issues with sudden power loss
 
 ### Instructions
-Download and extract buildroot. Call it buildroot
+Download and extract buildroot (2019-02). Call it buildroot
 
 Download this repo: 
 
@@ -61,5 +61,6 @@ VNC (remote access)
     dispmanx_vncserver -r
 
 Wifi
+
     Edit /boot/headunit.cfg and enter wifi_ssid and wifi_pass
     Reboot 
