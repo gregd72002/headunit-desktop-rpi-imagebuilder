@@ -1,0 +1,16 @@
+language: ruby
+sudo: required
+install:
+  - sudo apt-get update
+script:
+- echo 'Download image builder'
+- git clone git://github.com/gregd72002/headunit-desktop-rpi-imagebuilder
+- echo 'Download Buildroot'
+- wget https://buildroot.org/downloads/buildroot-2019.02.1.tar.gz 
+- tar -xvzf buildroot-2019.02.1.tar.gz
+- cd buildroot-2019.02.1
+- patch -d buildroot-2019.02.1/ -p0 < headunit-desktop-rpi-imagebuilder/patches/buildroot.patch
+- mkdir build
+- mkdir buildroot_dl
+- cd headunit-desktop-rpi-imagebuilder
+- make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot-2019.02.1 raspberrypi_defconfig
