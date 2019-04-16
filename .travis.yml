@@ -9,7 +9,6 @@ script:
 - wget https://buildroot.org/downloads/buildroot-2019.02.1.tar.gz 
 - echo 'Extract'
 - tar -xvzf buildroot-2019.02.1.tar.gz > /dev/null
-- cd buildroot-2019.02.1
 - patch -d buildroot-2019.02.1/ -p0 < headunit-desktop-rpi-imagebuilder/patches/buildroot.patch
 - mkdir build
 - mkdir buildroot_dl
