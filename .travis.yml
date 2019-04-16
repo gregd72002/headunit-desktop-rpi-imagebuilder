@@ -14,3 +14,4 @@ script:
 - mkdir buildroot_dl
 - cd headunit-desktop-rpi-imagebuilder
 - make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot-2019.02.1 raspberrypi_defconfig
+- make
