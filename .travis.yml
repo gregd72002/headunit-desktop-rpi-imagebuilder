@@ -15,7 +15,7 @@ script:
 - cd headunit-desktop-rpi-imagebuilder
 - make BR2_EXTERNAL=../headunit-desktop-rpi-imagebuilder/ O=$PWD -C ../buildroot-2019.02.1 raspberrypi_defconfig
 - echo "Building..."
-- make > >(tee build.log |grep '>>>') 2>&1
+- BR2_JLEVEL=4 make > >(tee build.log |grep '>>>') 2>&1
 - kill ${stupidpid}
 - echo 'Display end of log'
 - tail -1000 build.log
