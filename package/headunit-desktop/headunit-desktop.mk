@@ -4,8 +4,8 @@
 #
 #############################################################
 
-HEADUNIT_DESKTOP_VERSION = 18e430f
-HEADUNIT_DESKTOP_REPO_URL = https://github.com/viktorgino/headunit-desktop.git
+HEADUNIT_DESKTOP_VERSION = acccde7
+HEADUNIT_DESKTOP_REPO_URL = https://github.com/gregd72002/headunit-desktop.git
 
 HEADUNIT_DESKTOP_SITE_METHOD = git
 HEADUNIT_DESKTOP_GIT_SUBMODULES = y

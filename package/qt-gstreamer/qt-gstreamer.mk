@@ -5,8 +5,11 @@
 ################################################################################
 
 ifeq ($(BR2_PACKAGE_GST1_PLUGINS_BASE),y)
-QT_GSTREAMER_VERSION = 1.2.0
-QT_GSTREAMER_SOURCE = qt-gstreamer-$(QT_GSTREAMER_VERSION).tar.xz
+QT_GSTREAMER_VERSION = a0e95b2
+QT_GSTREAMER_REPO_URL = https://github.com/GStreamer/qt-gstreamer
+QT_GSTREAMER_SITE_METHOD = git
+QT_GSTREAMER_GIT_SUBMODULES = y
+QT_GSTREAMER_SITE = $(call qstrip,$(QT_GSTREAMER_REPO_URL))
 else
 QT_GSTREAMER_VERSION = 0.10.3
 QT_GSTREAMER_SOURCE = qt-gstreamer-$(QT_GSTREAMER_VERSION).tar.gz
