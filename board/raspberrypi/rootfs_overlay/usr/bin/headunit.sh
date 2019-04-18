@@ -1,7 +1,8 @@
 #!/bin/sh
 
+cd /opt
 while [ 1 ] 
 do
-	/opt/headunit-app "$@" 
+	headunit-app "$@" 
 done;
 
