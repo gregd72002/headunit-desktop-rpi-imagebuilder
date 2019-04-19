@@ -15,7 +15,7 @@ HEADUNIT_DESKTOP_DEPENDENCIES = bluez-qt libcanberra libqofono qt5base gconf2 qt
 
 define HEADUNIT_DESKTOP_CONFIGURE_CMDS
 	cd $(@D); $(HOST_DIR)/bin/protoc --proto_path=modules/android-auto/headunit/hu/ --cpp_out=modules/android-auto/headunit/hu/generated.x64/ modules/android-auto/headunit/hu/hu.proto
-	cd $(@D); $(HOST_DIR)/bin/qmake PREFIX=${TARGET_DIR} headunit-desktop.pro 
+	cd $(@D); $(HOST_DIR)/bin/qmake PREFIX=${TARGET_DIR}/opt/ headunit-desktop.pro 
 endef
 
 define HEADUNIT_DESKTOP_BUILD_CMDS
@@ -24,6 +24,9 @@ endef
 
 define HEADUNIT_DESKTOP_INSTALL_TARGET_CMDS
 	$(MAKE) -C $(@D) install 
+	rm -rf $(TARGET_DIR)/opt/HUDTheme/backgrounds
+	rm -rf $(TARGET_DIR)/opt/HUDThemeX/backgrounds
+
 endef
 
 $(eval $(generic-package))
