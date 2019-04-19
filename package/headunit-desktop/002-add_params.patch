@@ -1,0 +1,97 @@
+diff -u headunit-desktop.orig/app/main.cpp headunit-desktop/app/main.cpp
+--- headunit-desktop.orig/app/main.cpp	2019-04-19 09:37:24.221022214 +0000
++++ headunit-desktop/app/main.cpp	2019-04-19 09:39:00.431875194 +0000
+@@ -6,6 +6,7 @@
+ #include <QJsonObject>
+ #include <QVariantList>
+ #include <QQmlComponent>
++#include <QCommandLineParser>
+ #include <QThreadPool>
+ #include <QDir>
+ #include <QSettings>
+@@ -37,7 +38,27 @@
+ 
+     int defaultMenuItem = 6;
+ 
+-    PluginManager pluginManager(engine);
++    QCommandLineParser parser;
++    parser.setApplicationDescription("helper");
++    parser.addHelpOption();
++    parser.addVersionOption();
++    
++    QCommandLineOption pluginsOption(QStringList() << "p" << "plugins",
++	QCoreApplication::translate("main", "Plugins to enable (defaults to all)"),
++	QCoreApplication::translate("main", "plugins")
++    );
++    parser.addOption(pluginsOption);
++
++    parser.process(app);
++    QString p = parser.value(pluginsOption);
++    bool whitelist = parser.isSet(pluginsOption);
++    QStringList plugins;
++    if (whitelist) {
++	    plugins = p.split(" ",QString::SkipEmptyParts);
++    }
++   
++
++    PluginManager pluginManager(engine, whitelist, plugins);
+     ThemeManager themeManager(engine);
+     engine->rootContext()->setContextProperty("defaultMenuItem", defaultMenuItem);
+ 
+diff -u headunit-desktop.orig/app/pluginmanager.cpp headunit-desktop/app/pluginmanager.cpp
+--- headunit-desktop.orig/app/pluginmanager.cpp	2019-04-19 09:37:24.225022333 +0000
++++ headunit-desktop/app/pluginmanager.cpp	2019-04-19 09:41:00.399433725 +0000
+@@ -2,14 +2,14 @@
+ 
+ Q_LOGGING_CATEGORY(PLUGINMANAGER, "Plugin Manager")
+ 
+-PluginManager::PluginManager(QQmlApplicationEngine *engine, QObject *parent) : QObject(parent)
++PluginManager::PluginManager(QQmlApplicationEngine *engine, bool filter, QStringList filterList, QObject *parent) : QObject(parent)
+ {
+-    loadPlugins(engine);
++    loadPlugins(engine, filter, filterList);
+ }
+ void PluginManager::settingsChanged(QString key, QVariant value){
+     qDebug () << "settingsChanged" << key << value;
+ }
+-bool PluginManager::loadPlugins(QQmlApplicationEngine *engine)
++bool PluginManager::loadPlugins(QQmlApplicationEngine *engine, bool filter, QStringList filterList)
+ {
+     QDir pluginsDir(qApp->applicationDirPath());
+ #if defined(Q_OS_WIN)
+@@ -25,6 +25,14 @@
+     pluginsDir.cd("plugins");
+     //Load plugins
+     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
++
++	QString fileBaseName=fileName.section(".",0,0);
++	if (filter && !filterList.contains(fileBaseName,Qt::CaseInsensitive)) {
++		qDebug() << "Plugin not whitelisted (disabled): " << fileBaseName;
++		continue;
++	}
++	qDebug() << "Loading plugin: " << fileName;
++
+         QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
+ 
+         if(pluginLoader.metaData().value("MetaData").type() != QJsonValue::Object){
+diff -u headunit-desktop.orig/app/pluginmanager.h headunit-desktop/app/pluginmanager.h
+--- headunit-desktop.orig/app/pluginmanager.h	2019-04-19 09:37:24.225022333 +0000
++++ headunit-desktop/app/pluginmanager.h	2019-04-19 09:39:29.860747803 +0000
+@@ -22,7 +22,7 @@
+ {
+     Q_OBJECT
+ public:
+-    explicit PluginManager(QQmlApplicationEngine *engine, QObject *parent = nullptr);
++    explicit PluginManager(QQmlApplicationEngine *engine, bool filter, QStringList filterList, QObject *parent = nullptr);
+     ~PluginManager();
+ signals:
+ 
+@@ -30,7 +30,7 @@
+ private slots:
+     void messageReceived(QString id, QString message);
+ private:
+-    bool loadPlugins(QQmlApplicationEngine *engine);
++    bool loadPlugins(QQmlApplicationEngine *engine, bool filter, QStringList filterList);
+     QVariantList menuItems;
+     QVariantList configItems;
+     QMap<QString, PluginInterface *> plugins;

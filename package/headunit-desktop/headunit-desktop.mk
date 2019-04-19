@@ -4,7 +4,7 @@
 #
 #############################################################
 
-HEADUNIT_DESKTOP_VERSION = acccde7
+HEADUNIT_DESKTOP_VERSION = 4e7623f
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/gregd72002/headunit-desktop.git
 
 HEADUNIT_DESKTOP_SITE_METHOD = git
@@ -15,7 +15,7 @@ HEADUNIT_DESKTOP_DEPENDENCIES = bluez-qt libcanberra libqofono qt5base gconf2 qt
 
 define HEADUNIT_DESKTOP_CONFIGURE_CMDS
 	cd $(@D); $(HOST_DIR)/bin/protoc --proto_path=modules/android-auto/headunit/hu/ --cpp_out=modules/android-auto/headunit/hu/generated.x64/ modules/android-auto/headunit/hu/hu.proto
-	cd $(@D); $(HOST_DIR)/bin/qmake headunit-desktop.pro 
+	cd $(@D); $(HOST_DIR)/bin/qmake PREFIX=${TARGET_DIR} headunit-desktop.pro 
 endef
 
 define HEADUNIT_DESKTOP_BUILD_CMDS
@@ -23,10 +23,7 @@ define HEADUNIT_DESKTOP_BUILD_CMDS
 endef
 
 define HEADUNIT_DESKTOP_INSTALL_TARGET_CMDS
-	INSTALL_ROOT=$(TARGET_DIR) DESTDIR=$(TARGET_DIR) $(MAKE) -C $(@D) install 
-
-	mkdir --parent $(TARGET_DIR)/opt/plugins
-	find $(TARGET_DIR)/opt/*-plugin -mindepth 2 -type f -print -exec cp {} $(TARGET_DIR)/opt/plugins/ \;
+	$(MAKE) -C $(@D) install 
 endef
 
 $(eval $(generic-package))
