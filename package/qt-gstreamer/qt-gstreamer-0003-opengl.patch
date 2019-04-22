@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt.orig	2019-04-22 12:03:32.817679088 +0000
++++ b/CMakeLists.txt	2019-04-22 11:58:31.890815395 +0000
+@@ -110,6 +110,7 @@
+ include(CheckCXXSourceCompiles)
+ check_cxx_source_compiles("
+ #include <QtCore/QtGlobal>
++#include <QtGui/qtgui-config.h>
+ #if !defined(QT_OPENGL_ES)
+ #error \"No OpenGLES\"
+ #endif
