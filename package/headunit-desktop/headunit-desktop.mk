@@ -4,7 +4,7 @@
 #
 #############################################################
 
-HEADUNIT_DESKTOP_VERSION = 7145a7d
+HEADUNIT_DESKTOP_VERSION = 213fa25
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/gregd72002/headunit-desktop.git
 
 HEADUNIT_DESKTOP_SITE_METHOD = git
@@ -23,10 +23,9 @@ define HEADUNIT_DESKTOP_BUILD_CMDS
 endef
 
 define HEADUNIT_DESKTOP_INSTALL_TARGET_CMDS
-	$(MAKE) -C $(@D) install 
+	$(MAKE) -C $(@D) install
 	rm -rf $(TARGET_DIR)/opt/HUDTheme/backgrounds
 	rm -rf $(TARGET_DIR)/opt/HUDThemeX/backgrounds
-
 endef
 
 $(eval $(generic-package))

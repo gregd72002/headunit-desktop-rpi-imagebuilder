@@ -29,6 +29,8 @@ rsync -xa --progress --exclude /nfs $TMP_MOUNT_FOLDER/ $NFS_FOLDER
 umount $TMP_MOUNT_FOLDER
 
 cp -f $SCRIPTPATH/interfaces $NFS_FOLDER/etc/network/ 
+cp -f $SCRIPTPATH/vhclientarmhf $NFS_FOLDER/bin/
+chmod +x $NFS_FOLDER/bin/vhclientarmhf
 
 
 service tftpd-hpa restart

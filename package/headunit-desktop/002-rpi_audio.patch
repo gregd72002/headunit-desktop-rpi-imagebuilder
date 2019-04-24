@@ -1,0 +1,29 @@
+--- a/modules/android-auto/headunit.cpp.orig	2019-04-24 15:28:44.206516856 +0000
++++ b/modules/android-auto/headunit.cpp	2019-04-24 15:29:26.019886920 +0000
+@@ -159,7 +159,7 @@
+     aud_pipeline = gst_parse_launch("appsrc name=audsrc is-live=true block=false max-latency=100000 do-timestamp=true ! "
+                                     "audio/x-raw, signed=true, endianness=1234, depth=16, width=16, rate=48000, channels=2, format=S16LE ! "
+                                 #ifdef RPI
+-                                    "alsasink buffer-time=400000 sync=false device-name=\"Android Auto Music\""
++                                    "pulsesink buffer-time=400000 sync=false client-name=\"Android Auto Music\""
+                                 #else
+                                     "pulsesink buffer-time=400000 sync=false client-name=\"Android Auto Music\""
+                                 #endif
+@@ -182,7 +182,7 @@
+     au1_pipeline = gst_parse_launch("appsrc name=au1src is-live=true block=false max-latency=100000 do-timestamp=true ! "
+                                     "audio/x-raw, signed=true, endianness=1234, depth=16, width=16, rate=16000, channels=1, format=S16LE  ! "
+                                 #ifdef RPI
+-                                    "alsasink buffer-time=400000 sync=false device-name=\"Android Auto Voice\""
++                                    "pulsesink buffer-time=400000 sync=false client-name=\"Android Auto Voice\""
+                                 #else
+                                     "pulsesink buffer-time=400000 sync=false client-name=\"Android Auto Voice\""
+                                 #endif
+@@ -204,7 +204,7 @@
+ 
+     mic_pipeline = gst_parse_launch(
+             #ifdef RPI
+-                "alsasrc name=micsrc device-name=\"Android Auto Voice\" ! audioconvert ! "
++                "pulsesrc name=micsrc client-name=\"Android Auto Voice\" ! audioconvert ! "
+             #else
+                 "pulsesrc name=micsrc client-name=\"Android Auto Voice\" ! audioconvert ! "
+             #endif
