@@ -4,7 +4,7 @@
 #
 #############################################################
 
-HEADUNIT_DESKTOP_VERSION = 4ffde41
+HEADUNIT_DESKTOP_VERSION = b5c2b34
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/gregd72002/headunit-desktop.git
 
 HEADUNIT_DESKTOP_SITE_METHOD = git
