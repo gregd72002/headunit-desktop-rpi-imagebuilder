@@ -1,0 +1,29 @@
+--- a/themes/default-theme/default-theme.pro.orig	2019-05-06 12:52:56.173380428 +0000
++++ b/themes/default-theme/default-theme.pro	2019-05-06 13:29:49.593053265 +0000
+@@ -6,7 +6,7 @@
+ INCLUDEPATH += $${PWD}/quickcross
+ include("../../config.pri")
+ 
+-target.path = $${PREFIX}/themes
++target.path = $${PREFIX}/themes/default-theme
+ 
+ 
+ SOURCES += \
+@@ -29,7 +29,7 @@
+     $${PWD}/qml/theme/qmldir \
+     $${PWD}/qml/theme/designer/hudtheme.metainfo \
+     $${PWD}/qml/theme/backgrounds/* \
+-    $${PWD}/theme.json
++    $${PWD}/qml/theme/*.qml
+ 
+ #copy needed files to build dir
+ 
+@@ -45,7 +45,7 @@
+ DISTFILES += THEMEFILES
+ 
+ theme_files.files = $$THEMEFILES
+-theme_files.path = $${OUT_PWD}/HUDTheme
++theme_files.path = $${PREFIX}/themes/default-theme/HUDTheme
+ INSTALLS += target theme_files
+ 
+ 
