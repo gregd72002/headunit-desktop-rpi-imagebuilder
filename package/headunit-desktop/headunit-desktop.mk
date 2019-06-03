@@ -4,8 +4,10 @@
 #
 #############################################################
 
-HEADUNIT_DESKTOP_VERSION = b5c2b34
+HEADUNIT_DESKTOP_VERSION = 701dc211608a8d7956f6b8341a7665744301507e
 HEADUNIT_DESKTOP_REPO_URL = https://github.com/gregd72002/headunit-desktop.git
+#HEADUNIT_DESKTOP_VERSION = 701dc211608a8d7956f6b8341a7665744301507e
+#HEADUNIT_DESKTOP_REPO_URL = https://github.com/viktorgino/headunit-desktop.git
 
 HEADUNIT_DESKTOP_SITE_METHOD = git
 HEADUNIT_DESKTOP_GIT_SUBMODULES = y
